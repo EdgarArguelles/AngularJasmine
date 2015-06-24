@@ -1,3 +1,4 @@
+(function(){
 angular
     .module('app')
     .controller('airConditionerCtrl', airConditionerCtrl);
@@ -49,3 +50,4 @@ function airConditionerCtrl() {
 
 
 }
+})();
