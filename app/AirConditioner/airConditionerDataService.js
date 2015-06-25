@@ -6,7 +6,7 @@ angular
 /* @ngInject */
 function airConditionerDataService() {
     return {
-        getAirConditioner : function () {
+        getAirConditioners : function () {
             return [
                 {
                     brand:'LG',

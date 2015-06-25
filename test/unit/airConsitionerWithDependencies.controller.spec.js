@@ -1,54 +1,50 @@
-describe("Air conditoner with dependencies controller tests", function () {
+describe("Air conditioner with dependencies controller tests", function () {
 
-    var scope, controller;
+    var scope, controllerConstructor;
 
-    beforeEach(module("app"));
-
+    beforeEach(module('app'));
     beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
-        controller = $controller;
+        controllerConstructor = $controller;
     }));
 
-    it("should bind the correct values on the scope", function () {
+
+    it('should bind the correct values on the scope', function () {
         var mockData = [1, 2, 3, 4, 5];
         var mockAirConditionerDataService = sinon.stub({
-            getAirConditioner: function () {
+            getAirConditioners: function () {
             }
         });
-        mockAirConditionerDataService.getAirConditioner.returns(mockData);
-
-        var mockLocation = {};
-
-        var airConditionerWithDependenciesCtrl = controller("airConditionerWithDependenciesCtrl", {
-            "$scope": scope,
-            "$location": mockLocation,
-            "airConditionerWithDependenciesCtrl": mockAirConditionerDataService
-        });
-
+        mockAirConditionerDataService.getAirConditioners.returns(mockData);
+        var mockedLocation = {};
+        var airConditionerWithDependenciesCtrl = controllerConstructor('airConditionerWithDependenciesCtrl',
+            {scope: scope, $location: mockedLocation, airConditionerDataService: mockAirConditionerDataService});
         expect(airConditionerWithDependenciesCtrl.airConditioners.length).toBe(5);
     });
 
-    it("should bind the correct values on the scope", function () {
+
+    it('should check the functionality of go to patientDetails', function () {
         var mockData = [1, 2, 3, 4, 5];
         var airConditioner = {id: 23};
         var mockAirConditionerDataService = sinon.stub({
-            getAirConditioner: function () {
+            getAirConditioners: function () {
             }
         });
-        mockAirConditionerDataService.getAirConditioner.returns(mockData);
+        mockAirConditionerDataService.getAirConditioners.returns(mockData);
 
-        var mockLocation = sinon.stub({
+
+        var mockedLocation = sinon.stub({
             url: function () {
             }
         });
 
-        var airConditionerWithDependenciesCtrl = controller("airConditionerWithDependenciesCtrl", {
-            "$scope": scope,
-            "$location": mockLocation,
-            "airConditionerWithDependenciesCtrl": mockAirConditionerDataService
-        });
 
-        airConditionerWithDependenciesCtrl.goToAirConditionerDetail(airConditioner);
-        expect(mockLocation.url.calledWith("/air_conditioner/23")).toBe(true);
+        var airConditionerWithDependenciesCtrl = controllerConstructor('airConditionerWithDependenciesCtrl',
+            {scope: scope, $location: mockedLocation, airConditionerDataService: mockAirConditionerDataService});
+
+        airConditionerWithDependenciesCtrl.goToAirConditionerDetails(airConditioner);
+
+        expect(mockedLocation.url.calledWith("/airConditioner/23")).toBe(true);
     });
+
 });

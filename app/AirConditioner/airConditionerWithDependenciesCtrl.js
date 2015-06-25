@@ -11,14 +11,14 @@
         var vm = this;
         vm.airConditioners = [];
         vm.getWorkingAirConditionerCount = getWorkingAirConditionerCount;
-        vm.goToAirConditionerDetail = goToAirConditionerDetail;
+        vm.goToAirConditionerDetails=goToAirConditionerDetails;
 
         activate();
 
         ////////////////
 
         function activate() {
-            vm.airConditioners = airConditionerDataService.getAirConditioner();
+            vm.airConditioners = airConditionerDataService.getAirConditioners();
         }
 
         function getWorkingAirConditionerCount() {
@@ -30,9 +30,9 @@
             }, 0);
         }
 
-        function goToAirConditionerDetail(airConditioner) {
-            if (airConditioner) {
-                $location.url("/air_conditioner/" + airConditioner.id);
+        function goToAirConditionerDetails(airConditioner){
+            if(airConditioner){
+                $location.url('/airConditioner/'+airConditioner.id);
             }
         }
     }
