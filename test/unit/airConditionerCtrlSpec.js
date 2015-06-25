@@ -4,8 +4,8 @@ describe("Air Conditioner Controller Test", function () {
 
     beforeEach(module("app"));
 
-    beforeEach(inject(function ($controller, $rootScope) {
-        airConditionerCtrl = $controller("airConditionerCtrl", {scope: $rootScope.$new()});
+    beforeEach(inject(function ($controller) {
+        airConditionerCtrl = $controller("airConditionerCtrl", {});
     }));
 
     it("should check that airConditionerCtrl exists", function () {
