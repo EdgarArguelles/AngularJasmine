@@ -3,19 +3,16 @@
         .module('app')
         .controller('airConditionerWithDependenciesCtrl', airConditionerWithDependenciesCtrl);
 
-    airConditionerWithDependenciesCtrl.$inject = ['$location','airConditionerDataService'];
+    airConditionerWithDependenciesCtrl.$inject = ['$location', 'airConditionerDataService'];
 
     /* @ngInject */
     function airConditionerWithDependenciesCtrl($location, airConditionerDataService) {
-        /* jshint validthis: true */
         var vm = this;
         vm.airConditioners = [];
         vm.getWorkingAirConditionerCount = getWorkingAirConditionerCount;
-        vm.goToAirConditionerDetails=goToAirConditionerDetails;
+        vm.goToAirConditionerDetails = goToAirConditionerDetails;
 
         activate();
-
-        ////////////////
 
         function activate() {
             vm.airConditioners = airConditionerDataService.getAirConditioners();
@@ -30,9 +27,9 @@
             }, 0);
         }
 
-        function goToAirConditionerDetails(airConditioner){
-            if(airConditioner){
-                $location.url('/airConditioner/'+airConditioner.id);
+        function goToAirConditionerDetails(airConditioner) {
+            if (airConditioner) {
+                $location.url('/airConditioner/' + airConditioner.id);
             }
         }
     }

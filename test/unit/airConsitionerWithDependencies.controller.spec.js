@@ -46,5 +46,4 @@ describe("Air conditioner with dependencies controller tests", function () {
 
         expect(mockedLocation.url.calledWith("/airConditioner/23")).toBe(true);
     });
-
 });
