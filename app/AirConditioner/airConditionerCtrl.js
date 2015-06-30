@@ -8,7 +8,7 @@
         var vm = this;
         vm.airConditioners = [];
         vm.getWorkingAirConditionerCount = getWorkingAirConditionerCount;
-
+        vm.showDetails = showDetails;
         activate();
 
         function activate() {
@@ -41,6 +41,10 @@
                 }
                 return accum;
             }, 0)
+        }
+
+        function showDetails(ac) {
+            alert(ac.brand);
         }
     }
 })();

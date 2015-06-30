@@ -1,0 +1,18 @@
+<table class="table table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th>Expense</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Works?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="ac in data" ng-click="showAC(ac)">
+        <td>{{ac.brand}}</td>
+        <td>{{ac.description}}</td>
+        <td>{{ac.cost | currency}}</td>
+        <td>{{ac.isWorking}}</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,21 +1,4 @@
 <h1>Air Conditioners</h1>
 <div ng-controller="airConditionerCtrl as vm">
-    <table class="table table-bordered table-condensed">
-        <thead>
-        <tr>
-            <th>Expense</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Works?</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="e in vm.airConditioners">
-            <td>{{e.brand}}</td>
-            <td>{{e.description}}</td>
-            <td>{{e.cost | currency}}</td>
-            <td>{{e.isWorking}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <tabular-data data="vm.airConditioners" show-details="vm.showDetails"></tabular-data>
 </div>
